@@ -1,0 +1,57 @@
+header {
+    height: 80px;
+    background-color: gold;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.btn-cart {
+    height: 50px;
+    width: 200px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    float: right;
+    margin: 15px;
+    border: none;
+    border-radius: 25px;
+}
+
+.products {
+    margin: 0;
+}
+
+.product-item {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    border: 1px solid black;
+    height: 200px;
+    width: 25%;
+    padding: 0px;
+    text-align: center;
+}
+
+
+/* нужен медиа запрос при уменьшении размера */
+
+.product-item>h3,
+.product-item>p {
+    line-height: 50px;
+}
+
+.product-item>.buy-btn {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    left: 0px;
+    border: none;
+    height: 50px;
+    font-size: 1.2em;
+}
+
+.buy-btn:hover {
+    font-size: 1.4em;
+    background-color: rgb(0, 255, 21);
+    color: rgb(88, 88, 88);
+    transition: 2500ms;
+}

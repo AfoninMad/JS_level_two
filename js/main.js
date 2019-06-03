@@ -64,3 +64,15 @@ class ProductItem {
 
 
 const products = new ProductsList();
+
+//class BasketUnit {
+//    constructor(nameproduct, price, quantity,sum )
+//    {
+//        this.nameproduct = product.title;
+//        this.price = product.price;
+//        this.quantity = равно сколько раз доблено в корзину;
+//        this.sum =  this.quantity * this.price;
+//          
+//    }
+//     метод1 {}
+//     метод2 {}

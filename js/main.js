@@ -8,6 +8,7 @@ class ProductsList {
     init() {
         this._fetchProducts();
         this._render();
+        this._sum();
     }
     _fetchProducts() {
         this.data = [
@@ -19,12 +20,23 @@ class ProductsList {
         ];
     }
     _render() {
-        const block = document.querySelector(this.container);
-        for (let product of this.data) {
-            const prod = new ProductItem(product);
-            this.productsAll.push(prod);
-            block.insertAdjacentHTML('beforeend', prod.render());
+            const block = document.querySelector(this.container);
+            for (let product of this.data) {
+                const prod = new ProductItem(product);
+                this.productsAll.push(prod);
+                block.insertAdjacentHTML('beforeend', prod.render());
+            }
         }
+        // сумма
+    _sum() {
+        let sum = 0;
+        for (let i = 0; i < this.data.length; i++) {
+            sum += this.data[i].price;
+        }
+
+        console.log(sum);
+
+
     }
 }
 
@@ -47,6 +59,7 @@ class ProductItem {
                   </div>
               </div>`
     }
+
 }
 
 

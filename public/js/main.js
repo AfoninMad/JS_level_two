@@ -1,63 +1,49 @@
-const API = 'https://rarw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
 const app = new Vue({
     el: '#app',
-    data: {
-        catalogUrl: `/catalogData.json`,
-        products: [],
-        imgCatalog: `https://placehold.it/200x150`,
-        carImgCatalog: `https://placehold.it/75x50`,
-        searchLine: ''
-        //cartItem []
-    },
     methods: {
         getJson(url){
             return fetch(url)
                 .then(result => result.json())
-                .catch(error => console.log(error))
+                .catch(error => this.$refs.error.setText(error))
         },
-        addProduct(product) {
-            console.log(product);
+        postJson(url, data){
+            return fetch(url, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(result => result.json())
+                .catch(error => this.$refs.error.setText(error))
+        },
+        putJson(url, data){
+            return fetch(url, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(result => result.json())
+                .catch(error => this.$refs.error.setText(error))
+        },
+        deleteJson(url, data){
+            return fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(result => result.json())
+                .catch(error => this.$refs.error.setText(error))
         }
 
-    },
-
-
-    computed: {
-      filter: function () {
-          let items = this.products;
-          let searchRes = this.searchLine;
-          if(!searchRes){
-              return items;
-          }
-          searchRes = searchRes.trim().toLowerCase();
-
-          items = items.filter(item =>{
-              if(item.product_name.toLowerCase().indexOf(searchRes) !== -1){
-                  return item;
-              }
-          })
-
-          // Возвращает массив с отфильтрованными данными.
-          return items;
-      }
 
     },
-
-    mounted(){
-        this.getJson(`${API + this.catalogUrl}`)
-            .then(data => {
-                for(let el of data){
-                    this.products.push(el)
-                }
-            });
-        this.getJson(`getProducts.json`)
-            .then(data => {
-                for(let el of data){
-                    this.products.push(el)
-                }
-            })
-    }
 })
 
 // let getRequest = (url) => {
@@ -259,4 +245,4 @@ const app = new Vue({
 // };
 // const cart = new Cart();
 // const products = new ProductsList(cart);
-// products.getJson(`getProducts.json`).then(data => products.handleData(data));
+// products.getJson(`products.json`).then(data => products.handleData(data));
